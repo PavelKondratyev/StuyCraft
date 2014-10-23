@@ -7,7 +7,7 @@ public class Sabetour extends Character {
 
     //TO DO
     // Every debuff with make the previous debuff last an extra turn (does not 
-    // stack [ possibly in the enemy class ] )
+    // stack [ possibly in the enemy class ] ), add mana
 
 
     public Sabetour() {

@@ -2,12 +2,14 @@ import java.util.Random;
 import java.lang.Math;
 public class Archer extends Character {
 
+        // TO DO
+        // Add mana, finish skills
+
         // A character that has low damage but a chance for a crit
 
         public Archer() {
                 name = "Robin";
                 health = 80;
-                
                 pdefence = 80;
                 mdefence = 75;
                 attack = 60;

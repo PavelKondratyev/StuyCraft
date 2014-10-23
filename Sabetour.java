@@ -19,28 +19,28 @@ public class Sabetour extends Character {
 
 
     // Reduces enemy physical defence by 20% (temp) for 3 turns (temp)
-    public void deprotect( Enemy e ) {
+    public void deprotect( Character e ) {
 	e.deprotect = True;
 	e.pdefence *= .8;
 	System.out.println( "Deprotect Successful!" );
     }
 
     // Reduces enemy magical defence by 20% (temp) for 3 turns (temp)    
-    public void imperil( Enemy e ) {
+    public void imperil( Character e ) {
 	e.imperil = True;
 	e.mdefence *= .8;
 	System.out.println( "Imperil Successful!" );
     }
 
     // Inflicts damage to the enemy each turn for 3 turns (temp) 
-    public void poison( Enemy e ) {
+    public void poison( Character e ) {
         e.poison = True;
 	System.out.println( "Poison Successful!" );
     }
 
     // Causes the enemy to be unable to take action for 3 turns (temp) with a
     // 30% chance
-    public void daze( Enemy e ) {
+    public void daze( Character e ) {
 	Random rand = new Random();
 	int randomNum = rand.nextInt( 10 ) + 1;
 	if ( randomNum <= 3) {
@@ -64,7 +64,7 @@ public class Sabetour extends Character {
 
     // A low chance instant KO skill that increases if the enemy is inflicted
     // with debuffs (base chance
-    public void death( Enemy e ) {
+    public void death( Character e ) {
 	Random rand = new random();
 	int randomNum = rand.nextInt( 100 ) + 1;
 	double counter = booleanToInt( e.deprotect ) + booleanToInt( e.imperil ) + booleanToInt( e.poison ) + booleanToInt( e.daze );

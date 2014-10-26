@@ -5,18 +5,16 @@ public class StuyCraft{
 
     //Instance Variables 
     private int wave, level, money;
-    private boolean gameOver, bossLevel;
+    private boolean gameOver;
     private Character player, enemy;
     //There are 3 waves with 4 levels each - each 4th level is the boss match
     //gameOver is used to signify if the game is over or not, bossLevel signifies if the current level is a boss level
-
-
 
     //Constructor for StuyCraft
     public StuyCraft(){
 	wave = 1;
 	level = 1;
-	money = 100;
+	money = 0;
 	gameOver = false;
 	initGame();
     }
@@ -27,46 +25,87 @@ public class StuyCraft{
 	welcomeMessage+= "Welcome to StuyCraft!\n";
 	welcomeMessage+= "Where myths come to life!\n";
 	welcomeMessage+= "Please choose your character(case sensitive) :\n";
-	welcomeMessage+= "\tSabetour: Caster who specializes in debuff\n";
-	welcomeMessage+= "\tDualBlade: Brutal fighter that slashes enemies and\n";
-	welcomeMessage+= "\tRanger: Archer with the ability to critically strike\n";
-	welcomeMessage+= "============================";
+	welcomeMessage+= "\tWarrior: Brutal fighter that slashes enemies\n";
+	welcomeMessage+= "\tMage: Caster who can obliterate enemies with spells";
+	welcomeMessage+= "\tArcher: Ranger who can Do extra damage with his special attack\n";
+	welcomeMessage+= "============================\n";
       	System.out.println(welcomeMessage);
 	
 	String Choice;
 	Scanner Choose = new Scanner(System.in); //Choosing options in cmd
+	System.out.println("Please enter the character:");
 	Choice = Choose.next();
 
-	while(!((Choice).equals("Sabetour") || (Choice).equals("DualBlade") || (Choice).equals("Ranger"))){
-	    System.out.println("Invalid selection, please try again");
+	while(!((Choice).equals("Warrior") || (Choice).equals("Mage") || (Choice).equals("Archer"))){
+	    System.out.println("Invalid selection, please try again\n");
 	    System.out.println("Select your character:");
 	    Choice = Choose.next();
 	}
-	  
+	System.out.println("Please enter your name:");
+	String Name = "";
+	Name = Choose.next();
+
+	while(Name.length = 0){
+	    System.out.println("Error!\n Please enter a valid name:");
+	    Name = Choose.next();
+	}
+
 	System.out.println( Choice + " " + "has been initialized");
-	if(Choice.equals("Sabetour")){
-	    player = new Sabetour();
+	if(Choice.equals("Warrior")){
+	    player = new Warrior(Name);
 	}
-	else if(Choice.equals("DualBlade")){
-	    player = new DualBlade();
+	else if(Choice.equals("Mage")){
+	    player = new Mage(Name);
 	}
-	else if(Choice.equals("Ranger")){
-	    player = new Ranger();
+	else if(Choice.equals("Archer")){
+	    player = new Archer(Name);
 	}
     }
 
     public static void enemyEncounter(){
-	enemy = new Skeleton();
-
+	enemy = new Skeleton( wave );
     }
 
     public static void bossEncounter(){
+	enemy = new FrostWyrm( wave );
+
     }
+
+    public static void youWin(){
+	System.out.println("You have beaten the game!");
+    }
+
+
+    public static void
+    public static void playGame(){
+	if(wave > 3){
+	    youWin();
+	}
+	else if(level == 4){
+	    if(bossEncounter() == true){//true meaning that you defeated the boss
+		level =1;
+		wave +=1;
+		money += 100;
+		System.out.println("You have slain the mighty Frost Wyrm! He dropped 100 money!");
+	    } 
+	}
+	else{
+	    if( enemyEncounter() == true){//true means that you defeated the enemy
+		level += 1;
+		money += 50;
+		System.out.println("You have slain the skeleton! He dropped 50 money!");
+	    }
+	}
+    }
+
     
     public static void main(String[] args){
-
-    }
-	
-
-	
+	System.out.println("Prepare for an adventure");
+	StuyCraft main = new StuyCraft();
+	while(gameOver == false){
+	    while(player.isAlive()){
+		playGame();
+	    }
+	}
+    }		
 }

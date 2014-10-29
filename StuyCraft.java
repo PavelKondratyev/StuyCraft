@@ -1,3 +1,4 @@
+//Pavel Kondratyev, Aiden Lui, Andy Xu
 import java.util.*;
 
 
@@ -6,7 +7,7 @@ public class StuyCraft{
     //Instance Variables 
     private int wave, level, money;
     private boolean gameOver;
-    private Character player, enemy;
+    private  Character player, enemy;
     //There are 3 waves with 4 levels each - each 4th level is the boss match
     //gameOver is used to signify if the game is over or not, bossLevel signifies if the current level is a boss level
 
@@ -31,7 +32,7 @@ public class StuyCraft{
 	welcomeMessage+= "============================\n";
       	System.out.println(welcomeMessage);
 	
-	String Choice;
+	String Choice = "";
 	Scanner Choose = new Scanner(System.in); //Choosing options in cmd
 	System.out.println("Please enter the character:");
 	Choice = Choose.next();
@@ -45,7 +46,7 @@ public class StuyCraft{
 	String Name = "";
 	Name = Choose.next();
 
-	while(Name.length = 0){
+	while(Name.length() == 0){
 	    System.out.println("Error!\n Please enter a valid name:");
 	    Name = Choose.next();
 	}
@@ -62,22 +63,59 @@ public class StuyCraft{
 	}
     }
 
-    public static void enemyEncounter(){
+    public void enemyEncounter(){
 	enemy = new Skeleton( wave );
+	Scanner move = new Scanner(System.in);
+	System.out.println("You have run into a skeleton");
+	while (enemy.isAlive() && player.isAlive()){
+	    System.out.println("What will you do:");
+	    System.out.println("Attack\nSpecial Attack \nShop");
+	    System.out.println("Please input your action:");
+	    move.next();
+	    if (move.equalsIgnoreCase("Attack") || move.equalsIgnoreCase("Special Attack") || move.equalsIgnoreCase("Shop")){
+		if (move.equalsIgnoreCase("Attack")){
+		    if (player.Speed > enemy.Speed){
+			player.attack( enemy );
+			enemy.attack( player );
+		    }
+		    else{
+			enemy.attack( player );
+			player.attack( enemy );
+		    }
+		}
+		else if (move.equalsIgnoreCase("Special Attack")){
+		    if (player.Speed > enemy.Speed){
+			player.attackSP(enemy);
+			enemy.attack( player );
+		    }
+		    else{
+			enemy.attack( player );
+			player.attackSP( enemy );
+		    }
+		}
+		else{
+		    System.out.println("The shop is not open yet");
+		    }
+	    }
+	    else{
+		System.out.println("Invalid move, try again!");
+	    }
+	}
+
     }
 
-    public static void bossEncounter(){
+    public void bossEncounter(){
 	enemy = new FrostWyrm( wave );
 
     }
 
-    public static void youWin(){
+    public  void youWin(){
 	System.out.println("You have beaten the game!");
     }
 
 
-    public static void
-    public static void playGame(){
+
+    public void playGame(){
 	if(wave > 3){
 	    youWin();
 	}

@@ -14,7 +14,7 @@ class Warrior extends Character{
 	Speed = .5;
     }
     //Formula for Special attack is enemy.Defense = enemy.Defense - (SPAttack - enemy.SPDefense) and it costs 1 MP
-    public static void attackSP( Character target ){
+    public void attackSP( Character target ){
 	System.out.println("HEAR MY BATTLECRY!!!!!");
 	if (target.SPDefense > SPAttack){
 	    System.out.println( Name + "'s special attack was blocked by the enemy's special defense");

@@ -1,8 +1,8 @@
-class Archer extends Character{
+class Mage extends Character{
     //Mages are only a hair weaker than warrios, do a decent amount of regular damage, but their SP attacks obliterate
     //Their special attack does Their Attack * their SP attack and thus is their primary source of damage
   
-    public Archer( String name ){
+    public Mage( String name ){
 	Name = name;
 	HP = maxHP = 90;
 	MP = maxMP = 10;
@@ -14,10 +14,10 @@ class Archer extends Character{
 	Speed = .6;
     }
     //Formula for attack is taget.HP -= (Attack*SPAttack - target.SPDefense)
-    public static void attackSP( Character target ){
+    public  void attackSP( Character target ){
 	System.out.println("By Gandalf!");
 	if (missHit() == true){
-	    System.out.println( Name + "'s special attack missed!";
+	    System.out.println( Name + "'s special attack missed!");
 	    MP -= 1;
 	}
 	else{

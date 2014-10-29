@@ -1,4 +1,4 @@
-class Skeleton extends Character{
+class FrostWyrm extends Character{
     //Frost Wyrms are the boss enemies, while they don't do special attakcs, they hurt a lot
     //Their abilities scale with the wave, not the level
  

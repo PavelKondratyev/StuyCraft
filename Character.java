@@ -1,21 +1,21 @@
 class Character{
-    protected String Name;
-    protected int HP, maxHP , MP, maxMP , Attack, SPAttack, Defense, SPDefense, Accuracy;
-    protected double Speed;
+    public String Name;
+    public int HP, maxHP , MP, maxMP , Attack, SPAttack, Defense, SPDefense, Accuracy;
+    public double Speed;
  
     
     public boolean isAlive(){
 	if(HP <= 0){
-	    return false}
+	    return false;}
 	else{
-	    return true}
+	    return true;}
     }
 
     public boolean  missHit(){ //This sees if you miss the hit
 	Random rand = new Random();
 	int intRand = rand.nextInt(Accuracy);
 	if (intRand != 0){
-	    return false
+	    return false;
 		//returns false if the hit goes through
 		}
     }

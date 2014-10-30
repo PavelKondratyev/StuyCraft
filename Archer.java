@@ -7,7 +7,7 @@ class Archer extends Character{
 	HP = maxHP = 80;
 	MP = maxMP = 5;
 	Attack = 15;
-	Defense = 7;
+	Defense = 5;
 	SPAttack = 6;
 	SPDefense = 5;
 	Accuracy = 6;
@@ -15,16 +15,22 @@ class Archer extends Character{
     }
     //Formula for Special attack is enemy.Defense = enemy.Defense - (SPAttack - enemy.SPDefense) and it costs 1 MP
     public void attackSP( Character target ){
-	System.out.println("I'm charging my bow");
-	if (missHit() == true){
-	    System.out.println( Name + "'s special attack missed!");
-	    MP -= 1;
+	if(MP > 0){
+	    System.out.println("=====================");
+	    System.out.println("I'm charging my bow");
+	    if (missHit() == true){
+		System.out.println( Name + "'s special attack missed!");
+		MP -= 1;
+	    }
+	    else{
+		System.out.println("AHA!");//that's what archers say when they fire
+		System.out.println( Name + " did " + (Attack +  SPAttack - target.SPDefense) + " damage to the "+ target.Name);              
+		target.HP -= (Attack + SPAttack - target.SPDefense);
+	    MP -=1;
+	    }
 	}
 	else{
-	    System.out.println("AHA!");//that's what archers say when they fire
-	    target.HP -= (Attack + SPAttack - target.SPDefense);
-	    MP -=1;
+	    System.out.println("Not enough mana");
 	}
     }
 }
-

@@ -6,25 +6,32 @@ class Mage extends Character{
 	Name = name;
 	HP = maxHP = 90;
 	MP = maxMP = 10;
-	Attack = 8;
-	Defense = 7;
-	SPAttack = 3;
+	Attack = 12;
+	Defense = 5;
+	SPAttack = 2;
 	SPDefense = 7;
 	Accuracy = 10;
 	Speed = .6;
     }
     //Formula for attack is taget.HP -= (Attack*SPAttack - target.SPDefense)
     public  void attackSP( Character target ){
-	System.out.println("By Gandalf!");
-	if (missHit() == true){
-	    System.out.println( Name + "'s special attack missed!");
-	    MP -= 1;
+	if(MP>0){
+	    System.out.println("=====================");
+	    System.out.println("By Gandalf!");
+	    if (missHit() == true){
+		System.out.println( Name + "'s special attack missed!");
+		MP -= 1;
+	    }
+	    else{
+		System.out.println("NYEAAAH!");
+		System.out.println( Name + " did " + (Attack * SPAttack - target.SPDefense) + " damage to the "+ target.Name);
+		target.HP -= (Attack * SPAttack - target.SPDefense);
+		MP -=1;
+	    }
 	}
 	else{
-	    System.out.println("NYEAAAH!");
-	    target.HP -= (Attack * SPAttack - target.SPDefense);
-	    MP -=1;
+	    System.out.print("Not enough mana!");
 	}
     }
-}
 
+}

@@ -5,10 +5,10 @@ class FrostWyrm extends Character{
   
     public FrostWyrm( int wave ){
 	Name = "Frost Wyrm";
-	HP = maxHP = 50 + (wave * 50);
-	Attack = (wave * 10);
-	Defense = (wave * 5);
-	SPDefense = 2 + (wave *4);
+	HP = maxHP = 40+ (wave * 20);
+	Attack = (wave * 8);
+	Defense = (wave * 4);
+	SPDefense = 2 + (wave * 2);
 	Accuracy = (wave * 5);
 	Speed = .4;
     }

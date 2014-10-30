@@ -5,10 +5,10 @@ class Skeleton extends Character{
   
     public Skeleton( int wave ){
 	Name = "Skeleton";
-	HP = maxHP = 50 + (wave * 20);
-	Attack = 5 + (wave * 5);
-	Defense = 5 + (wave * 5);
-	SPDefense = 2 + (wave *2);
+	HP = maxHP = 20 + ( wave * 20);
+	Attack = (wave * 7);
+	Defense = (wave * 4);
+	SPDefense = (wave *2);
 	Accuracy = (wave * 4);
 	Speed = .65;
     }
